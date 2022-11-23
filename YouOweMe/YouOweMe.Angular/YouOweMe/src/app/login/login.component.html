@@ -1,0 +1,24 @@
+<div class="login-wrappper" fxLayout="row" fxLayoutAlign="center center" fxFill>
+    <mat-card class="box" fxFlex="30%">
+        <mat-card-header fxLayoutAlign="center center">
+            <mat-card-title>Iniciar sesion</mat-card-title>
+        </mat-card-header>
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+            <mat-card-content fxFill>
+                <mat-form-field fxLayout="row">
+                    <mat-label>Ingrese su email</mat-label>
+                    <input matInput placeholder="example@domain.com" formControlName="email">
+                    <mat-error *ngIf="formControl['email'].invalid">{{ getEmailError() }}</mat-error>
+                </mat-form-field>
+                <mat-form-field fxLayout="row" fxFill>
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Entre 5 a 10 caracteres." formControlName="password" type="password">
+                    <mat-error *ngIf="formControl['password'].invalid">{{ getPasswordError() }}</mat-error>
+                </mat-form-field>
+            </mat-card-content>
+            <div fxLayoutAlign="center center">
+                <button mat-stroked-button color="accent" class="btn-lock" type="submit">Ingresar</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

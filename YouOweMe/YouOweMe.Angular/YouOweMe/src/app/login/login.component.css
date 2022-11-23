@@ -1,0 +1,7 @@
+:host ::ng-deep .mat-form-field-wrapper {
+    position: unset !important;
+}
+
+.mat-form-field {
+    padding-top: 10px;
+}
