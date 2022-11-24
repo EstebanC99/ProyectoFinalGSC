@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private authService: AuthService) {
     if (this.authService.currentUserValue){
-      this.router.navigate(['/Index']);
+      this.router.navigate(['/Menu']);
     }
   }
 
@@ -61,6 +61,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
+    if (this.loginForm.invalid)
+      return;
+
     this.submitted = true;
 
     let user: User = {
@@ -72,7 +75,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe({
         error: (e) => this.error = e,
-        complete: () => this.router.navigate(['/Index']),
+        complete: () => this.router.navigate(['/Menu']),
       });
   }
 }

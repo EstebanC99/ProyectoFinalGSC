@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YouOweMe.Abstractions\YouOweMe.Abstractions.csproj" />
+    <ProjectReference Include="..\YouOweMe.DataView\YouOweMe.DataView.csproj" />
+    <ProjectReference Include="..\YouOweMe.Repositories\YouOweMe.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

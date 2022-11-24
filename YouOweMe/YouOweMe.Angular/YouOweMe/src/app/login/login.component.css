@@ -1,7 +1,17 @@
 :host ::ng-deep .mat-form-field-wrapper {
     position: unset !important;
+    width: 100%;
 }
 
 .mat-form-field {
     padding-top: 10px;
+}
+
+.login-wrapper {
+    background: #e3f6f5;
+}
+
+.box {
+    box-shadow: 10px 5px 5px #bae8e8;
+    border-radius: 5%;
 }
