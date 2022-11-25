@@ -10,7 +10,7 @@ namespace YouOweMe.Repositories.Configs
         {
             builder.Property(m => m.Email).IsRequired();
             builder.Property(m => m.Password).IsRequired();
-            builder.Ignore(m => m.Descripcion);
+            builder.Ignore(m => m.Description);
         }
     }
 }

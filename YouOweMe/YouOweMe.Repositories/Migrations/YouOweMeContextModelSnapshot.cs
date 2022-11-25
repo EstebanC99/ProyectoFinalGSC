@@ -30,7 +30,7 @@ namespace YouOweMe.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -47,17 +47,18 @@ namespace YouOweMe.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("CantidadPrestada")
+                    b.Property<int>("BorrowedAmount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("FechaDevolucion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("FechaPrestamo")
+                    b.Property<DateTime>("LoanDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PersonID")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("ReturnDate")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ThingID")
                         .HasColumnType("int");
@@ -79,20 +80,18 @@ namespace YouOweMe.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<string>("Apellido")
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Lastname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Mail")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telefono")
-                        .IsRequired()
+                    b.Property<string>("Phone")
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
@@ -109,22 +108,22 @@ namespace YouOweMe.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("int");
-
                     b.Property<int>("CategoryID")
                         .HasColumnType("int");
 
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Nombre")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 

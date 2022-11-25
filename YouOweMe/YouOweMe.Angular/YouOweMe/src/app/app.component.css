@@ -1,0 +1,12 @@
+.menu-spacer {
+    flex: 0.01;
+}
+
+.nav-header {
+    font-size: large;
+}
+
+.mat-toolbar {
+    position: sticky;
+    top: 0;
+}

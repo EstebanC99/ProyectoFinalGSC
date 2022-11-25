@@ -8,11 +8,11 @@ namespace YouOweMe.Repositories.Configs
     {
         public void Configure(EntityTypeBuilder<Person> builder)
         { 
-            builder.Ignore(m => m.Descripcion);
+            builder.Ignore(m => m.Description);
 
-            builder.Property(m => m.Nombre).IsRequired();
-            builder.Property(m => m.Apellido).IsRequired();
-            builder.Property(m => m.Telefono).HasMaxLength(15);
+            builder.Property(m => m.Name).IsRequired();
+            builder.Property(m => m.Lastname).IsRequired();
+            builder.Property(m => m.Phone).HasMaxLength(15);
         }
     }
 }

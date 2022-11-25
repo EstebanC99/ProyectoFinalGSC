@@ -26,6 +26,5 @@ namespace YouOweMe.Repositories
         public DbSet<Loan> Loans { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<User> Users { get; set; }
-
     }
 }

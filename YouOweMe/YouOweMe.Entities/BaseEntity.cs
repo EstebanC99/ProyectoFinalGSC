@@ -4,6 +4,6 @@
     {
         public int ID { get; protected set; }
 
-        public string? Descripcion { get; protected set; }
+        public string? Description { get; protected set; }
     }
 }

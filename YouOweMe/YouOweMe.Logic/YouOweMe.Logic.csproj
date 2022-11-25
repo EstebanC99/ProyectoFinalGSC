@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\YouOweMe.Abstractions\YouOweMe.Abstractions.csproj" />
     <ProjectReference Include="..\YouOweMe.DataView\YouOweMe.DataView.csproj" />
     <ProjectReference Include="..\YouOweMe.Repositories\YouOweMe.Repositories.csproj" />

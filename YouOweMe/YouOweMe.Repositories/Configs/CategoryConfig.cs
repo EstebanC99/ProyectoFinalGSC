@@ -8,7 +8,7 @@ namespace YouOweMe.Repositories.Configs
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.Property(m => m.Descripcion).IsRequired();
+            builder.Property(m => m.Description).IsRequired();
         }
     }
 }

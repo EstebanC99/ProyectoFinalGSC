@@ -8,9 +8,9 @@ namespace YouOweMe.Repositories.Configs
     {
         public void Configure(EntityTypeBuilder<Thing> builder)
         {
-            builder.Property(m => m.Nombre).IsRequired();
-            builder.Property(m => m.Descripcion).IsRequired();
-            builder.Property(m => m.Cantidad).IsRequired();
+            builder.Property(m => m.Name).IsRequired();
+            builder.Property(m => m.Description).IsRequired();
+            builder.Property(m => m.Quantity).IsRequired();
 
             builder.HasOne(m => m.Category)
                 .WithMany();

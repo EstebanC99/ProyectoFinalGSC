@@ -14,5 +14,7 @@ namespace YouOweMe.Repositories
         DbSet<Person> Persons { get; }
 
         DbSet<User> Users { get; }
+
+        int SaveChanges();
     }
 }

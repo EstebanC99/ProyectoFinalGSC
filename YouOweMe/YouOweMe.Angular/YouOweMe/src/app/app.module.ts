@@ -11,16 +11,18 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './jwt.interceptor';
 import { ErrorInterceptor } from './error.interceptor';
-import { AuthService } from './auth.service';
+import { AuthService } from './Services/Auth/auth.service';
 import { MenuComponent } from './menu/menu.component';
-import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
+import { PersonsDetailComponent } from './persons-detail/persons-detail.component';
+import { PersonsListComponent } from './persons-list/persons-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MenuComponent,
-    NavigationMenuComponent
+    PersonsDetailComponent,
+    PersonsListComponent
   ],
   imports: [
     BrowserModule,

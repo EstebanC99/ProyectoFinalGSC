@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
 using YouOweMe.Abstractions;
+using YouOweMe.Entities.Factories;
+using YouOweMe.Entities.Factories.Interfaces;
 using YouOweMe.Logic;
+using YouOweMe.Logic.Mapper;
 using YouOweMe.Repositories;
+using YouOweMe.Repositories.Persons;
 using YouOweMe.Repositories.Users;
 using YouOweMe.WebApi.Filter;
 using YouOweMe.WebApi.Security;
@@ -17,6 +20,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(HelperMapper));
+
 
 #region DbContext
 
@@ -24,6 +29,12 @@ builder.Services.AddDbContext<YouOweMeContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("YouOweMeConnection"));
 });
+
+#endregion
+
+#region Factories
+
+builder.Services.AddSingleton<IPersonFactory, PersonFactory>();
 
 #endregion
 
@@ -37,12 +48,15 @@ builder.Services.AddCors();
 
 builder.Services.AddScoped<IYouOweMeContext, YouOweMeContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 
 #endregion
 
 #region Logic Injections
 
+builder.Services.AddSingleton<IHelperMapper, HelperMapper>();
 builder.Services.AddScoped<IUserBusinessService, UserLogic>();
+builder.Services.AddScoped<IPersonBusinessService, PersonLogic>();
 
 #endregion
 

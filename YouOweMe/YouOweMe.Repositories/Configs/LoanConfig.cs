@@ -8,7 +8,7 @@ namespace YouOweMe.Repositories.Configs
     {
         public void Configure(EntityTypeBuilder<Loan> builder)
         {
-            builder.Ignore(m => m.Descripcion);
+            builder.Ignore(m => m.Description);
 
             builder.HasOne(m => m.Person)
                 .WithMany();
@@ -20,8 +20,8 @@ namespace YouOweMe.Repositories.Configs
             builder.Navigation(m => m.Thing)
                 .UsePropertyAccessMode(PropertyAccessMode.Property);
 
-            builder.Property(m => m.CantidadPrestada).IsRequired();
-            builder.Property(m => m.FechaPrestamo).IsRequired();
+            builder.Property(m => m.BorrowedAmount).IsRequired();
+            builder.Property(m => m.ReturnDate).IsRequired();
         }
     }
 }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\YouOweMe.DataView\YouOweMe.DataView.csproj" />
+    <ProjectReference Include="..\YouOweMe.Entities\YouOweMe.Entities.csproj" />
   </ItemGroup>
 
 </Project>
