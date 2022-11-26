@@ -7,8 +7,16 @@
     padding-top: 10px;
 }
 
+body {
+    background-image: '/YouOweMe/src/assets/background.png'!important;
+    background-size: 100%;
+    background-size: cover;
+}
+
 .login-wrapper {
-    background: #e3f6f5;
+    background-image: '/YouOweMe/src/assets/background.png';
+    background-size: 100%;
+    background-size: cover;
 }
 
 .box {

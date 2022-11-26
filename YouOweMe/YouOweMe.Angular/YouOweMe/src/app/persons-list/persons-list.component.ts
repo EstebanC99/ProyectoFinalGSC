@@ -1,8 +1,7 @@
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
+import { DataSource } from '@angular/cdk/collections';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Person } from '../Interfaces/person';
 import { PersonServiceService } from '../Services/Person/person.service';
 
@@ -25,6 +24,10 @@ export class PersonsListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
 
+  }
+
+  recargarListado(recargar: boolean): void {
+    this.DataSource.connect().subscribe();
   }
 
 }

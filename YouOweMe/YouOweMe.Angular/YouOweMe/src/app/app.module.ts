@@ -15,6 +15,7 @@ import { AuthService } from './Services/Auth/auth.service';
 import { MenuComponent } from './menu/menu.component';
 import { PersonsDetailComponent } from './persons-detail/persons-detail.component';
 import { PersonsListComponent } from './persons-list/persons-list.component';
+import { PersonMenuComponent } from './person-menu/person-menu.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PersonsListComponent } from './persons-list/persons-list.component';
     LoginComponent,
     MenuComponent,
     PersonsDetailComponent,
-    PersonsListComponent
+    PersonsListComponent,
+    PersonMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { PersonsListComponent } from './persons-list/persons-list.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

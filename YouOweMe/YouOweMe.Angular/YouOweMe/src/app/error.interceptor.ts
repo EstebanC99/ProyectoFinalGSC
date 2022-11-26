@@ -8,11 +8,14 @@ import {
 import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from './Services/Auth/auth.service';
 import { HTTPResponses } from './httpresponses';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private notification: MatSnackBar) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(catchError(err => {
@@ -21,8 +24,13 @@ export class ErrorInterceptor implements HttpInterceptor {
         location.reload();
       }
 
-      const error = err.error.message || err.statusText;
+      const error = err.error || err.statusText;
+      this.showNotification(error);
       return throwError(() => error);
     }));
+  }
+
+  showNotification(message: string): void {
+    this.notification.open(message, "Cerrar", {verticalPosition: "bottom"});
   }
 }

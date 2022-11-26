@@ -16,4 +16,8 @@ export class PersonServiceService {
   GetPersonsList(): Observable<Person[]> {
     return this.http.get<Person[]>(`${environment.apiUrl}/Person/Persons`);
   }
+
+  SaveNewPerson(person: Person): void {
+    this.http.post<Person>(`${environment.apiUrl}/Person/Add`, person).subscribe();
+  }
 }
