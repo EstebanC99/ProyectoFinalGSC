@@ -1,0 +1,17 @@
+<form [formGroup]="categoryDetailForm" (ngSubmit)="save()">
+    <div class="category-detail">
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <input matInput formControlName="description">
+                <mat-icon matSuffix>description</mat-icon>
+                <mat-error *ngIf="formControl['description'].invalid">Debe completar este campo</mat-error>
+            </mat-form-field>
+        </p>
+    </div>
+    <div fxLayoutAlign="end" class="category-detail-buttons">
+        <button mat-stroked-button color="primary" class="btn-lock" type="submit">Guardar</button>
+        <button mat-stroked-button color="accent" class="btn-lock" (click)="delete()" *ngIf="formControl['id'].value">Eliminar</button>
+        <button mat-stroked-button color="accent" class="btn-lock" type="button" (click)="cancel()">Cancelar</button>
+    </div>
+</form>

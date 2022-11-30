@@ -1,3 +1,61 @@
+<mat-grid-list cols="4" rowHeight="50%">
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <div class="welcome-tile">
+            <mat-card class="welcome-card">
+                <mat-card-header>
+                  <mat-card-title>Bienvenido a YouOweMe</mat-card-title>
+                  <mat-card-subtitle>Desarrollador: Carignani, Esteban</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>Aplicacion de prestamos personales de objetos.</p>
+                  <p>YouOweMe es una aplicacion pensada para otorgar prestamos de 
+                    cosas/objetos personales a otras personas. ¿Cuantas veces ha ocurrido que prestamos
+                    algo y luego no sabemos quien lo tiene?<br>
+                    Bueno, es hora de decir adios a ese problema. Con YouOweMe podas llevar control de todos
+                    tus objetos prestados, a quien se los prestaste, y a su vez las devoluciones ya realizadas.
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button>LIKE</button>
+                  <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
 
 
-<p>menu works!</p>
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <div class="vertical-tile">
+            <div class="vertical-content">
+                <h1>Bienvenido a YouOweMe</h1>
+                <div class="information">
+                    <div>
+                        <h3>Aplicacion de prestamos personales de objetos.</h3>
+                    </div>
+                    <div style="margin-top: 10%;">
+                        <p><b>YouOweMe</b> es una aplicacion pensada para otorgar prestamos de 
+                            cosas/objetos personales a otras personas. ¿Cuantas veces ha ocurrido que prestamos
+                            algo y luego no sabemos quien lo tiene?<br>
+                            Bueno, es hora de decir adios a ese problema. Con YouOweMe podas llevar control de todos
+                            tus objetos prestados, a quien se los prestaste, y a su vez las devoluciones ya realizadas.
+                        </p>
+                    </div>
+                    <div class="developer-footer">
+                        <p>~ <b>Developer:</b> Carignani, Esteban ~</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-grid-tile>
+    
+    
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+
+    </mat-grid-tile>
+
+    
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+
+    </mat-grid-tile>
+</mat-grid-list>

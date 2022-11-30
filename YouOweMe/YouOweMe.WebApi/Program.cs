@@ -9,6 +9,7 @@ using YouOweMe.Entities.Factories.Interfaces;
 using YouOweMe.Logic;
 using YouOweMe.Logic.Mapper;
 using YouOweMe.Repositories;
+using YouOweMe.Repositories.Categories;
 using YouOweMe.Repositories.Persons;
 using YouOweMe.Repositories.Users;
 using YouOweMe.WebApi.Filter;
@@ -35,6 +36,7 @@ builder.Services.AddDbContext<YouOweMeContext>(options =>
 #region Factories
 
 builder.Services.AddSingleton<IPersonFactory, PersonFactory>();
+builder.Services.AddSingleton<ICategoryFactory, CategoryFactory>();
 
 #endregion
 
@@ -49,6 +51,7 @@ builder.Services.AddCors();
 builder.Services.AddScoped<IYouOweMeContext, YouOweMeContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 #endregion
 
@@ -57,6 +60,7 @@ builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddSingleton<IHelperMapper, HelperMapper>();
 builder.Services.AddScoped<IUserBusinessService, UserLogic>();
 builder.Services.AddScoped<IPersonBusinessService, PersonLogic>();
+builder.Services.AddScoped<ICategoryBusinessService, CategoryLogic>();
 
 #endregion
 

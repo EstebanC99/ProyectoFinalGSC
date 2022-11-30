@@ -1,4 +1,4 @@
-<form [formGroup]="personDetailForm" (ngSubmit)="guardar()">
+<form [formGroup]="personDetailForm" (ngSubmit)="save()">
     <div class="person-detail">
         <p>
             <mat-form-field appearance="outline">
@@ -31,6 +31,7 @@
     </div>
     <div fxLayoutAlign="end" class="person-detail-buttons">
         <button mat-stroked-button color="primary" class="btn-lock" type="submit">Guardar</button>
-        <button mat-stroked-button color="accent" class="btn-lock" type="submit">Cancelar</button>
+        <button mat-stroked-button color="accent" class="btn-lock" (click)="delete()" *ngIf="formControl['id'].value">Eliminar</button>
+        <button mat-stroked-button color="accent" class="btn-lock" type="button" (click)="cancel()">Cancelar</button>
     </div>
 </form>

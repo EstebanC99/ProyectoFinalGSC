@@ -1,6 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -13,9 +12,14 @@ import { JwtInterceptor } from './jwt.interceptor';
 import { ErrorInterceptor } from './error.interceptor';
 import { AuthService } from './Services/Auth/auth.service';
 import { MenuComponent } from './menu/menu.component';
-import { PersonsDetailComponent } from './persons-detail/persons-detail.component';
-import { PersonsListComponent } from './persons-list/persons-list.component';
-import { PersonMenuComponent } from './person-menu/person-menu.component';
+import { PersonsDetailComponent } from './Persons/persons-detail/persons-detail.component';
+import { PersonsListComponent } from './Persons/persons-list/persons-list.component';
+import { PersonMenuComponent } from './Persons/person-menu/person-menu.component';
+import { ConfirmCancelNotificationComponent } from './confirm-cancel-notification/confirm-cancel-notification.component';
+import { MatDialogRef } from '@angular/material/dialog';
+import { CategoriesListComponent } from './Categories/categories-list/categories-list.component';
+import { CategoryDetailComponent } from './Categories/category-detail/category-detail.component';
+import { CategoryMenuComponent } from './Categories/category-menu/category-menu.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { PersonMenuComponent } from './person-menu/person-menu.component';
     MenuComponent,
     PersonsDetailComponent,
     PersonsListComponent,
-    PersonMenuComponent
+    PersonMenuComponent,
+    ConfirmCancelNotificationComponent,
+    CategoriesListComponent,
+    CategoryDetailComponent,
+    CategoryMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -34,11 +42,12 @@ import { PersonMenuComponent } from './person-menu/person-menu.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    { provide: MatDialogRef, useValue:{}},
     AuthService
   ],
   bootstrap: [AppComponent],

@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-card-title>
+        <h1>Administracion de Categorias</h1>
+    </mat-card-title>
+    <mat-card-content>
+        <mat-accordion>
+            <mat-expansion-panel [expanded]="displayCategoryDetail" (opened)="displayCategoryDetail = true" (afterCollapse)="displayCategoryDetail = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Detalle Categoria
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Detalle de la Categoria
+                        <mat-icon>category</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-category-detail (displayed)="displayCategoryDetail = $event"></app-category-detail>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="displayCategoryList || !displayCategoryDetail" (opened)="displayCategoryList = true" (afterCollapse)="displayCategoryList = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Listado de Categorias
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Categorias registradas
+                        <mat-icon>list</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-categories-list (selectedCategory)="displayCategory($event)" (displayed)="displayCategoryList = $event"></app-categories-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-content>
+</mat-card>

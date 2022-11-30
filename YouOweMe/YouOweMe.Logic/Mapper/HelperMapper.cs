@@ -15,6 +15,20 @@ namespace YouOweMe.Logic.Mapper
             Mapper = mapper;
         }
 
+        #region BaseDataView Mapping
+
+        public DataView.DataView BaseEntityToDataView(BaseEntity baseEntity)
+        {
+            return this.Mapper.Map<BaseEntity, DataView.DataView>(baseEntity);
+        }
+
+        public ValueObject DataViewToValueObject(DataView.DataView baseDataView)
+        {
+            return this.Mapper.Map<DataView.DataView, ValueObject>(baseDataView);
+        }
+
+        #endregion
+
         #region Person Mapping
 
         public PersonDataView PersonToPersonDataView(Person person)
