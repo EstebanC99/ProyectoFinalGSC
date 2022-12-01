@@ -2,7 +2,7 @@
 
 namespace YouOweMe.Repositories.Users
 {
-    public interface IUserRepository
+    public interface IUserRepository: IBaseRepository
     {
         User GetUserByEmail(string email);
     }

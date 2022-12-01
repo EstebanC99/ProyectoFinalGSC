@@ -53,14 +53,14 @@ namespace YouOweMe.Repositories.Migrations
                     b.Property<DateTime>("LoanDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PersonID")
+                    b.Property<int?>("PersonID")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ReturnDate")
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ThingID")
+                    b.Property<int?>("ThingID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -108,7 +108,7 @@ namespace YouOweMe.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("CategoryID")
+                    b.Property<int?>("CategoryID")
                         .HasColumnType("int");
 
                     b.Property<string>("Color")
@@ -157,15 +157,11 @@ namespace YouOweMe.Repositories.Migrations
                 {
                     b.HasOne("YouOweMe.Entities.Person", "Person")
                         .WithMany()
-                        .HasForeignKey("PersonID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PersonID");
 
                     b.HasOne("YouOweMe.Entities.Thing", "Thing")
                         .WithMany()
-                        .HasForeignKey("ThingID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ThingID");
 
                     b.Navigation("Person");
 
@@ -176,9 +172,7 @@ namespace YouOweMe.Repositories.Migrations
                 {
                     b.HasOne("YouOweMe.Entities.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryID");
 
                     b.Navigation("Category");
                 });

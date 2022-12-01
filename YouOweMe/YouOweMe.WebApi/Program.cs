@@ -11,6 +11,7 @@ using YouOweMe.Logic.Mapper;
 using YouOweMe.Repositories;
 using YouOweMe.Repositories.Categories;
 using YouOweMe.Repositories.Persons;
+using YouOweMe.Repositories.Things;
 using YouOweMe.Repositories.Users;
 using YouOweMe.WebApi.Filter;
 using YouOweMe.WebApi.Security;
@@ -37,6 +38,7 @@ builder.Services.AddDbContext<YouOweMeContext>(options =>
 
 builder.Services.AddSingleton<IPersonFactory, PersonFactory>();
 builder.Services.AddSingleton<ICategoryFactory, CategoryFactory>();
+builder.Services.AddSingleton<IThingFactory, ThingFactory>();
 
 #endregion
 
@@ -49,9 +51,11 @@ builder.Services.AddCors();
 #region Repository Injections
 
 builder.Services.AddScoped<IYouOweMeContext, YouOweMeContext>();
+builder.Services.AddScoped<IBaseRepository, BaseRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IThingRepository, ThingRepository>();
 
 #endregion
 
@@ -61,6 +65,7 @@ builder.Services.AddSingleton<IHelperMapper, HelperMapper>();
 builder.Services.AddScoped<IUserBusinessService, UserLogic>();
 builder.Services.AddScoped<IPersonBusinessService, PersonLogic>();
 builder.Services.AddScoped<ICategoryBusinessService, CategoryLogic>();
+builder.Services.AddScoped<IThingBusinessService, ThingLogic>();
 
 #endregion
 

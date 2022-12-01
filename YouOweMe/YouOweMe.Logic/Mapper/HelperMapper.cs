@@ -42,5 +42,23 @@ namespace YouOweMe.Logic.Mapper
         }
 
         #endregion
+
+        #region Thing Mapping
+
+        public ThingDataView ThingToThingDataView(Thing thing)
+        {
+            return this.Mapper.Map<Thing, ThingDataView>(thing);
+        }
+
+        public RegisterThing ThingDataViewToRegisterThing(ThingDataView thingDataView, Category category)
+        {
+            var registerThing = this.Mapper.Map<ThingDataView, RegisterThing>(thingDataView);
+
+            registerThing.Category = category;
+
+            return registerThing;
+        }
+
+        #endregion
     }
 }

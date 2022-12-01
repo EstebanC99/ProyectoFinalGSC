@@ -5,13 +5,13 @@ using YouOweMe.Repositories.Users;
 
 namespace YouOweMe.Logic
 {
-    public class UserLogic : IUserBusinessService
+    public class UserLogic : BaseLogic<IUserRepository>, IUserBusinessService
     {
-        private IUserRepository Repository { get; set; }
-
-        public UserLogic(IUserRepository repository)
+        public UserLogic(IUserRepository repository,
+                         IHelperMapper mapper)
+            : base(repository, mapper)
         {
-            this.Repository = repository;
+            
         }
 
         public UserDataView FindUser(string email, string password)

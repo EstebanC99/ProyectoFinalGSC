@@ -1,0 +1,99 @@
+﻿@using YouOweMe.DataView
+
+@model ThingDataView
+
+@{
+    ViewBag.Title = "Detalle";
+    var isEditing = this.ViewBag.IsEditing == null || this.ViewBag.IsEditing;
+    var isDelete = this.ViewBag.IsDelete != null && this.ViewBag.IsDelete;
+    var formAction = this.ViewBag.FormAction == null ? "Save" : this.ViewBag.FormAction;
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<h2>@ViewBag.Title</h2>
+<form asp-controller="Things">
+    @Html.TextAreaFor(m => m.ID, new { @hidden="true", @value="0" })
+    <div class="row g-2">
+        <div class="col-md">
+            <div class="form-floating">
+                @if (isEditing) {
+                    @Html.TextBoxFor(m => m.Name, new { @class="form-control", @id="nameInput", @placeHolder="Nombre" })
+                } else {
+                    @Html.TextBoxFor(m => m.Name, new { @class="form-control", @id="nameInput", @placeHolder="Nombre", @disabled="disabled" })
+                }
+                <label for="nameInput">Nombre</label>
+                <span asp-validation-for="Name" style="color: red;"></span>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-floating mb-3">
+                @if (isEditing){
+                    @Html.TextBoxFor(m => m.Color, new { @class="form-control", @id="colorInput", @placeHolder="Color" })
+                } else {
+                    @Html.TextBoxFor(m => m.Color, new { @class="form-control", @id="colorInput", @placeHolder="Color", @disabled="disabled" })
+                }
+                <label for="colorInput">Color</label>
+                <span asp-validation-for="Color" style="color: red;"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-2">
+        <div class="col-md">
+            <div class="form-floating">
+                @if (isEditing) {
+                    @Html.TextBoxFor(m => m.Quantity, new { @class="form-control", @id="quantityInput", @placeHolder="Cantidad" })
+                } else {
+                    @Html.TextBoxFor(m => m.Quantity, new { @class="form-control", @id="quantityInput", @placeHolder="Cantidad", @disabled="disabled" })
+                }
+                <label for="quantityInput">Cantidad</label>
+                <span asp-validation-for="Quantity" style="color: red;"></span>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-floating mb-3">
+                @if (isEditing) {
+                    <select asp-items='(IEnumerable<SelectListItem>)this.ViewBag.Categories' class="form-select" id="categorySelect" asp-for="Category.ID"></select>
+                } else {
+                    <select asp-items='(IEnumerable<SelectListItem>)this.ViewBag.Categories' class="form-select" id="categorySelect" asp-for="Category.ID" disabled></select>
+                }
+                <label for="categorySelect">Categoria</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row g-2">
+        <div class="form-floating">
+            @if (isEditing){
+                @Html.TextAreaFor(m => m.Description, new { @class="form-control", @id="descriptionArea", @placeHolder="Ingrese una descripcion aqui..", @style="height: 100px;" })
+            } else {
+                @Html.TextAreaFor(m => m.Description, new { @class="form-control", @id="descriptionArea", @placeHolder="Ingrese una descripcion aqui..", @style="height: 100px;", @disabled="disabled" })
+            }
+            <label for="descriptionArea">Descripcion</label>
+        </div>
+    </div>
+
+    <div class="row g-2" style="margin-top: 5%;">
+        <div class="col-md float-end">
+            @if (!isDelete)
+            {
+                if (isEditing){
+                    <button type="submit" asp-action="Save" class="btn btn-outline-primary">Guardar</button>
+                    <button type="reset" class="btn btn-outline-danger">Cancelar</button>
+                } else {
+                    <button type="submit" asp-action="Save" class="btn btn-outline-primary" disabled>Guardar</button>
+                    <button type="submit" asp-action="Cancel" class="btn btn-outline-danger">Cancelar</button>
+                }
+            } else {
+                <button type="submit" asp-action="Delete" class="btn btn-outline-danger">Eliminar</button>
+                <button type="submit" asp-action="Cancel" class="btn btn-outline-secondary">Cancelar</button>
+            }
+        </div>
+    </div>
+</form>
+

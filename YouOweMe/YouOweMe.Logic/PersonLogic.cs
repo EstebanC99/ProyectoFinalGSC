@@ -6,20 +6,15 @@ using YouOweMe.Repositories.Persons;
 
 namespace YouOweMe.Logic
 {
-    public class PersonLogic : IPersonBusinessService
+    public class PersonLogic : BaseLogic<IPersonRepository>, IPersonBusinessService
     {
-        private IPersonRepository Repository { get; set; }
-
-        private IHelperMapper Mapper { get; set; }
-
         private IPersonFactory Factory { get; set; }
 
         public PersonLogic(IPersonRepository repository, 
                            IHelperMapper mapper,
                            IPersonFactory factory)
+            : base(repository, mapper)
         {
-            this.Repository = repository;
-            this.Mapper = mapper;
             this.Factory = factory;
         }
 
@@ -49,7 +44,7 @@ namespace YouOweMe.Logic
 
         public PersonDataView Modify(PersonDataView personDataView)
         {
-            var person = this.Repository.GetByID(personDataView.ID);
+            var person = this.Repository.GetByID(personDataView.ID.Value);
 
             if (person is null)
                 throw new ValidationException("No se encontro la persona buscada");

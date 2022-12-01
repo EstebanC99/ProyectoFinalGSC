@@ -1,6 +1,6 @@
 ﻿namespace YouOweMe.Abstractions
 {
-    public interface ICategoryBusinessService
+    public interface ICategoryBusinessService: IBaseBusinessService
     {
         List<DataView.DataView> GetAll();
 

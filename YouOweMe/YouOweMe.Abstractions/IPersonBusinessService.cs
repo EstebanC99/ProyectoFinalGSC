@@ -2,7 +2,7 @@
 
 namespace YouOweMe.Abstractions
 {
-    public interface IPersonBusinessService
+    public interface IPersonBusinessService: IBaseBusinessService
     {
         public List<PersonDataView> GetAll();
 

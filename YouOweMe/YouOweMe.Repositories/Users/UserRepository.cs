@@ -2,18 +2,16 @@
 
 namespace YouOweMe.Repositories.Users
 {
-    public class UserRepository : IUserRepository
-    {
-        private IYouOweMeContext Context { get; set; }
-
-        public UserRepository(IYouOweMeContext context)
+    public class UserRepository : BaseRepository, IUserRepository
+    { 
+        public UserRepository(IYouOweMeContext context) : base(context)
         {
-            Context = context;
+
         }
 
         public User GetUserByEmail(string email)
         {
-            return Context.Users.FirstOrDefault(u => u.Email.Equals(email));
+            return this.Context.Users.FirstOrDefault(u => u.Email.Equals(email));
         }
     }
 }

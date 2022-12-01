@@ -2,13 +2,11 @@
 
 namespace YouOweMe.Repositories.Persons
 {
-    public class PersonRepository : IPersonRepository
+    public class PersonRepository : BaseRepository, IPersonRepository
     {
-        private IYouOweMeContext Context { get; set; }
-
-        public PersonRepository(IYouOweMeContext context)
+        public PersonRepository(IYouOweMeContext context) : base(context)
         {
-            this.Context = context;
+
         }
 
         public List<Person> GetAll()

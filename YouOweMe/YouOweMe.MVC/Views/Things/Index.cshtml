@@ -1,0 +1,50 @@
+﻿@using YouOweMe.DataView
+@model List<ThingDataView>
+
+@{
+    ViewBag.Title = "Listado de Cosas";
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <a asp-controller="Things" asp-action="Details">
+        <input type="button" class="btn btn-primary float-end" value="Agregar"/>
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Color</th>
+                <th>Cantidad</th>
+                <th>Categoria</th>
+                <th>Opciones</th>
+            </tr>
+            @foreach (var thing in Model) 
+            {
+            <tr>
+                <td>@thing.ID</td>
+                <td>@thing.Name</td>
+                <td>@thing.Color</td>
+                <td>@thing.Quantity</td>
+                <td>@thing.Category?.Description</td>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@thing.ID" asp-route-isDelete="@false">Ver</a>
+                    <a asp-action="Edit" asp-route-id="@thing.ID">Editar</a>
+                    <a asp-action="Detail" asp-route-id="@thing.ID" asp-route-isDelete="@true">Eliminar</a>
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+</div>

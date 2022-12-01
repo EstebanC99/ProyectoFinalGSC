@@ -2,7 +2,7 @@
 
 namespace YouOweMe.Repositories.Categories
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository: IBaseRepository
     {
         List<Category> GetAll();
 

@@ -5,20 +5,15 @@ using YouOweMe.Repositories.Categories;
 
 namespace YouOweMe.Logic
 {
-    public class CategoryLogic : ICategoryBusinessService
+    public class CategoryLogic : BaseLogic<ICategoryRepository>, ICategoryBusinessService
     {
-        private ICategoryRepository Repository { get; set; }
-
-        private IHelperMapper Mapper { get; set; }
-
         private ICategoryFactory Factory { get; set; }
 
         public CategoryLogic(ICategoryRepository repository,
                              IHelperMapper mapper,
                              ICategoryFactory factory)
+            : base(repository, mapper)
         {
-            this.Repository = repository;
-            this.Mapper = mapper;
             this.Factory = factory;
         }
 
@@ -55,7 +50,7 @@ namespace YouOweMe.Logic
 
         public DataView.DataView Modify(DataView.DataView categoryDataView)
         {
-            var category = this.Repository.GetByID(categoryDataView.ID);
+            var category = this.Repository.GetByID(categoryDataView.ID.Value);
 
             if (category is null)
                 throw new ValidationException("No se encontro la categoria buscada");

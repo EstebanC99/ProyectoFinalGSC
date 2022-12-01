@@ -2,7 +2,7 @@
 
 namespace YouOweMe.Repositories.Persons
 {
-    public interface IPersonRepository
+    public interface IPersonRepository: IBaseRepository
     {
         List<Person> GetAll();
 

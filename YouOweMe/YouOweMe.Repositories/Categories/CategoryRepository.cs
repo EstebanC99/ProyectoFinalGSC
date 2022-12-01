@@ -2,13 +2,11 @@
 
 namespace YouOweMe.Repositories.Categories
 {
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : BaseRepository, ICategoryRepository
     {
-        private IYouOweMeContext Context { get; set; }
-
-        public CategoryRepository(IYouOweMeContext context)
+        public CategoryRepository(IYouOweMeContext context) : base(context)
         {
-            this.Context = context;
+
         }
 
         public List<Category> GetAll()

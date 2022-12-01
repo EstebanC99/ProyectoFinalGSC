@@ -2,7 +2,7 @@
 
 namespace YouOweMe.Abstractions
 {
-    public interface IUserBusinessService
+    public interface IUserBusinessService: IBaseBusinessService
     {
         UserDataView FindUser(string email, string password);
     }
