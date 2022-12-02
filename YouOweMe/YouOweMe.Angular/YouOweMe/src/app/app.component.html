@@ -9,6 +9,11 @@
         <div class="pull-left">
             <a mat-button [routerLink]="'/Persons'">Personas</a>
             <a mat-button [routerLink]="'/Categories'">Categorias</a>
+            <button mat-button [matMenuTriggerFor]="loanMenu">Prestamos</button>
+            <mat-menu #loanMenu="matMenu" yPosition="below">
+                <a mat-menu-item [routerLink]="'/NewLoan'">Nuevo</a>
+                <a mat-menu-item [routerLink]="'/Loans'">Registrados</a>
+            </mat-menu>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>

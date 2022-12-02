@@ -20,6 +20,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { CategoriesListComponent } from './Categories/categories-list/categories-list.component';
 import { CategoryDetailComponent } from './Categories/category-detail/category-detail.component';
 import { CategoryMenuComponent } from './Categories/category-menu/category-menu.component';
+import { NewLoanComponent } from './Loans/new-loan/new-loan.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CategoryMenuComponent } from './Categories/category-menu/category-menu.
     ConfirmCancelNotificationComponent,
     CategoriesListComponent,
     CategoryDetailComponent,
-    CategoryMenuComponent
+    CategoryMenuComponent,
+    NewLoanComponent
   ],
   imports: [
     BrowserModule,

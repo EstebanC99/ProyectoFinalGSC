@@ -7,10 +7,12 @@ using YouOweMe.Repositories.Things;
 using YouOweMe.Logic;
 using YouOweMe.Logic.Mapper;
 using Microsoft.EntityFrameworkCore;
+using YouOweMe.MVC.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(cfg => cfg.Filters.Add(typeof(ExceptionManagerFilter)));
 builder.Services.AddAutoMapper(typeof(HelperMapper));
 
 #region DbContext

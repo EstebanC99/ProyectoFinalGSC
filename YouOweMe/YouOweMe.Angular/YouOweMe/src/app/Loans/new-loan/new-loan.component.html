@@ -1,0 +1,102 @@
+<form [formGroup]="newLoanForm">
+    <mat-card>
+        <mat-card-title>
+            <h1>Creacion de Prestamos</h1>
+        </mat-card-title>
+        <mat-card-content>
+            <mat-accordion class="headers-align">
+                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Persona
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Seleccione quien adquiere el prestamo
+                            <mat-icon>account_circle</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nombre</mat-label>
+                        <input type="text" 
+                            placeholder="Seleccione una persona"
+                            aria-label="Nombre"
+                            matInput
+                            formControlName="owner"
+                            [matAutocomplete]="personAutoComplete">
+                        <mat-autocomplete #personAutoComplete="matAutocomplete" [displayWith]="displayPerson">
+                            <mat-option *ngFor="let person of filteredPersons | async" [value]="person">
+                                {{person.lastname}}, {{person.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="text" [value]="selectedPerson?.email" readonly>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Telefono</mat-label>
+                        <input matInput type="text" [value]="selectedPerson?.phone" readonly>
+                    </mat-form-field>
+                    <mat-action-row>
+                        <button mat-button color="primary" (click)="nextStep()" [disabled]="!newLoanForm.valid">Next</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                
+                <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Cosas
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Seleccione la cosa que desea prestar
+                            <mat-icon>category</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                
+                    <mat-form-field appearance="fill">
+                        <mat-label>Cosa</mat-label>
+                        <input type="text" 
+                            placeholder="Seleccione una cosa"
+                            aria-label="Cosa"
+                            matInput
+                            formControlName="thing"
+                            [matAutocomplete]="thingAutoComplete">
+                        <mat-autocomplete #thingAutoComplete="matAutocomplete" [displayWith]="displayThing">
+                            <mat-option *ngFor="let thing of filteredThings | async" [value]="thing">
+                                {{thing.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <mat-action-row>
+                        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                        <button mat-button color="primary" (click)="nextStep()" [disabled]="!newLoanForm.valid">Next</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Cantidad
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Ingrese la cantidad a prestar
+                            <mat-icon>production_quantity_limits</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                
+                    <mat-form-field appearance="fill">
+                        <mat-label>Cantidad</mat-label>
+                        <input matInput type="number" formControlName="quantityBorrowed">
+                    </mat-form-field>
+                
+                    <mat-action-row>
+                        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                        <button mat-button color="primary" (click)="nextStep()">End</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+
+            </mat-accordion>
+        </mat-card-content>
+    </mat-card>
+</form>
