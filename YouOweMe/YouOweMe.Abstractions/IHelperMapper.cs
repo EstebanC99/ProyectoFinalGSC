@@ -17,5 +17,7 @@ namespace YouOweMe.Abstractions
         ThingDataView ThingToThingDataView(Thing thing);
 
         RegisterThing ThingDataViewToRegisterThing(ThingDataView thingDataView, Category category);
+
+        LoanDataView LoanToLoanDataView(Loan loan);
     }
 }

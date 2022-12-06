@@ -1,13 +1,15 @@
 ﻿using YouOweMe.Abstractions;
 using YouOweMe.DataView;
+using YouOweMe.Entities;
 using YouOweMe.Entities.Factories.Interfaces;
+using YouOweMe.Entities.Services;
 using YouOweMe.Extensions;
 using YouOweMe.Repositories.Categories;
 using YouOweMe.Repositories.Things;
 
 namespace YouOweMe.Logic
 {
-    public class ThingLogic : BaseLogic<IThingRepository>, IThingBusinessService
+    public class ThingLogic : BaseLogic<IThingRepository>, IThingBusinessService, IThingDomainService
     {
         private IThingFactory Factory { get; set; }
 
@@ -79,6 +81,11 @@ namespace YouOweMe.Logic
                 throw new ValidationException("No se encontro la cosa buscada");
 
             this.Repository.Delete(thing);
+        }
+
+        public int? GetBorrowedAmount(Thing thing)
+        {
+            return this.Repository.GetBorrowedAmount(thing);
         }
     }
 }

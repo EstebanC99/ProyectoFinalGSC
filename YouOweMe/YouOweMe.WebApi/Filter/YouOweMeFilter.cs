@@ -32,11 +32,11 @@ namespace YouOweMe.WebApi.Filter
                 }
                 catch (Exception ex)
                 {
-                    context.ExceptionHandled = false;
+                    context.ExceptionHandled = true;
 
                     context.Result = new ObjectResult("Ocurrio un error inesperado")
                     {
-                        StatusCode = StatusCodes.Status500InternalServerError
+                        StatusCode = StatusCodes.Status500InternalServerError,
                     };
 
                     this.Logger.LogError(ex, ex.Message);

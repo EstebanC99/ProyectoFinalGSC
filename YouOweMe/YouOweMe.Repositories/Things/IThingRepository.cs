@@ -13,5 +13,7 @@ namespace YouOweMe.Repositories.Things
         void Update(Thing thing);
 
         void Delete(Thing thing);
+
+        int? GetBorrowedAmount(Thing thing);
     }
 }

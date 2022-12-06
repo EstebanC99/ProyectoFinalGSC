@@ -21,7 +21,7 @@ namespace YouOweMe.Repositories.Configs
                 .UsePropertyAccessMode(PropertyAccessMode.Property);
 
             builder.Property(m => m.BorrowedAmount).IsRequired();
-            builder.Property(m => m.ReturnDate).IsRequired();
+            builder.Property(m => m.ReturnDate);
         }
     }
 }

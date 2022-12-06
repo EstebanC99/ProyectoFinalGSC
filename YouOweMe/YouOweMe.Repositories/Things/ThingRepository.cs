@@ -44,5 +44,13 @@ namespace YouOweMe.Repositories.Things
 
             this.Context.SaveChanges();
         }
+
+        public int? GetBorrowedAmount(Thing thing)
+        {
+            return this.Context.Loans.Where(l => l.Thing != null &&
+                                                 l.Thing.ID == thing.ID &&
+                                                 !l.ReturnDate.HasValue)
+                                     .Sum(l => l.BorrowedAmount);
+        }
     }
 }

@@ -16,7 +16,7 @@
                         </mat-panel-description>
                     </mat-expansion-panel-header>
                 
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="outline">
                         <mat-label>Nombre</mat-label>
                         <input type="text" 
                             placeholder="Seleccione una persona"
@@ -29,17 +29,18 @@
                                 {{person.lastname}}, {{person.name}}
                             </mat-option>
                         </mat-autocomplete>
+                        <mat-error *ngIf="formControl['owner'].invalid">Seleccione una persona</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="fill">
                         <mat-label>Email</mat-label>
-                        <input matInput type="text" [value]="selectedPerson?.email" readonly>
+                        <input matInput type="text" [value]="selectedPerson?.email" tabindex="-1" readonly>
                     </mat-form-field>
                     <mat-form-field appearance="fill">
                         <mat-label>Telefono</mat-label>
-                        <input matInput type="text" [value]="selectedPerson?.phone" readonly>
+                        <input matInput type="text" [value]="selectedPerson?.phone" tabindex="-1" readonly>
                     </mat-form-field>
                     <mat-action-row>
-                        <button mat-button color="primary" (click)="nextStep()" [disabled]="!newLoanForm.valid">Next</button>
+                        <button mat-button color="primary" (click)="nextStep()" [disabled]="!formControl['owner'].valid">Next</button>
                     </mat-action-row>
                 </mat-expansion-panel>
                 
@@ -54,7 +55,7 @@
                         </mat-panel-description>
                     </mat-expansion-panel-header>
                 
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="outline">
                         <mat-label>Cosa</mat-label>
                         <input type="text" 
                             placeholder="Seleccione una cosa"
@@ -67,10 +68,31 @@
                                 {{thing.name}}
                             </mat-option>
                         </mat-autocomplete>
+                        <mat-error *ngIf="formControl['thing'].invalid">Debe elegir una cosa</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput type="text" [value]="selectedThing?.name" tabindex="-1" readonly>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Color</mat-label>
+                        <input matInput type="text" [value]="selectedThing?.color" tabindex="-1" readonly>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Cantidad</mat-label>
+                        <input matInput type="number" [value]="selectedThing?.quantity" tabindex="-1" readonly>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Categoria</mat-label>
+                        <input matInput type="text" [value]="selectedThing?.category?.description" tabindex="-1" readonly>
+                    </mat-form-field>
+                    <mat-form-field class="text-area" appearance="fill">
+                        <mat-label>Descripcion</mat-label>
+                        <textarea matInput type="text" [value]="selectedThing?.description" tabindex="-1" readonly></textarea>
                     </mat-form-field>
                     <mat-action-row>
                         <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                        <button mat-button color="primary" (click)="nextStep()" [disabled]="!newLoanForm.valid">Next</button>
+                        <button mat-button color="primary" (click)="nextStep()" [disabled]="!formControl['thing'].valid">Next</button>
                     </mat-action-row>
                 </mat-expansion-panel>
 
@@ -85,14 +107,15 @@
                         </mat-panel-description>
                     </mat-expansion-panel-header>
                 
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="outline">
                         <mat-label>Cantidad</mat-label>
                         <input matInput type="number" formControlName="quantityBorrowed">
+                        <mat-error *ngIf="formControl['quantityBorrowed'].invalid">Ingrese un valor mayor a cero</mat-error>
                     </mat-form-field>
                 
                     <mat-action-row>
                         <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                        <button mat-button color="primary" (click)="nextStep()">End</button>
+                        <button mat-button color="primary" (click)="nextStep()" [disabled]="!newLoanForm.valid">End</button>
                     </mat-action-row>
                 </mat-expansion-panel>
 

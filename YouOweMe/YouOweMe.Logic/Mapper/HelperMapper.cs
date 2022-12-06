@@ -60,5 +60,14 @@ namespace YouOweMe.Logic.Mapper
         }
 
         #endregion
+
+        #region Loan Mapping
+
+        public LoanDataView LoanToLoanDataView(Loan loan)
+        {
+            return this.Mapper.Map<Loan, LoanDataView>(loan);
+        }
+
+        #endregion
     }
 }

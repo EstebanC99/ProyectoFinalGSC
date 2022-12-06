@@ -29,6 +29,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           notificationMessage = err.error;
           break;
         case HTTPResponses.InternalServerError:
+          console.log(err);
           notificationMessage = err.error;
           break;
         default: 

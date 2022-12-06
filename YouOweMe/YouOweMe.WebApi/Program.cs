@@ -6,10 +6,12 @@ using System.Text.Json.Serialization;
 using YouOweMe.Abstractions;
 using YouOweMe.Entities.Factories;
 using YouOweMe.Entities.Factories.Interfaces;
+using YouOweMe.Entities.Services;
 using YouOweMe.Logic;
 using YouOweMe.Logic.Mapper;
 using YouOweMe.Repositories;
 using YouOweMe.Repositories.Categories;
+using YouOweMe.Repositories.Loans;
 using YouOweMe.Repositories.Persons;
 using YouOweMe.Repositories.Things;
 using YouOweMe.Repositories.Users;
@@ -39,6 +41,7 @@ builder.Services.AddDbContext<YouOweMeContext>(options =>
 builder.Services.AddSingleton<IPersonFactory, PersonFactory>();
 builder.Services.AddSingleton<ICategoryFactory, CategoryFactory>();
 builder.Services.AddSingleton<IThingFactory, ThingFactory>();
+builder.Services.AddSingleton<ILoanFactory, LoanFactory>();
 
 #endregion
 
@@ -56,6 +59,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IThingRepository, ThingRepository>();
+builder.Services.AddScoped<ILoanRepository, LoanRepository>();
 
 #endregion
 
@@ -66,6 +70,13 @@ builder.Services.AddScoped<IUserBusinessService, UserLogic>();
 builder.Services.AddScoped<IPersonBusinessService, PersonLogic>();
 builder.Services.AddScoped<ICategoryBusinessService, CategoryLogic>();
 builder.Services.AddScoped<IThingBusinessService, ThingLogic>();
+builder.Services.AddScoped<ILoanBusinessService, LoanLogic>();
+
+#endregion
+
+#region Domain Services
+
+builder.Services.AddScoped<IThingDomainService, ThingLogic>();
 
 #endregion
 
