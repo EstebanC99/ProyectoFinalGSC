@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-card-title>
+        <h1>Administracion de Prestamos</h1>
+    </mat-card-title>
+    <mat-card-content>
+        <mat-accordion>
+            <mat-expansion-panel [expanded]="displayLoanDetail" (opened)="displayLoanDetail = true" (afterCollapse)="displayLoanDetail = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Detalle del Prestamo
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Detalle del prestamo seleccionado
+                        <mat-icon>info</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-loan-detail (displayed)="displayLoanDetail = $event"></app-loan-detail>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="displayLoanList || !displayLoanDetail" (opened)="displayLoanList = true" (afterCollapse)="displayLoanList = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Listado de Prestamos
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Prestamos registrados
+                        <mat-icon>real_estate_agent</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-loans-list (selectedLoan)="displayLoan($event)" (displayed)="displayLoanList = $event"></app-loans-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-content>
+</mat-card>

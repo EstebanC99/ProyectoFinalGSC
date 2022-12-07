@@ -21,6 +21,9 @@ import { CategoriesListComponent } from './Categories/categories-list/categories
 import { CategoryDetailComponent } from './Categories/category-detail/category-detail.component';
 import { CategoryMenuComponent } from './Categories/category-menu/category-menu.component';
 import { NewLoanComponent } from './Loans/new-loan/new-loan.component';
+import { LoansListComponent } from './Loans/loans-list/loans-list.component';
+import { LoanMenuComponent } from './Loans/loan-menu/loan-menu.component';
+import { LoanDetailComponent } from './Loans/loan-detail/loan-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { NewLoanComponent } from './Loans/new-loan/new-loan.component';
     CategoriesListComponent,
     CategoryDetailComponent,
     CategoryMenuComponent,
-    NewLoanComponent
+    NewLoanComponent,
+    LoansListComponent,
+    LoanMenuComponent,
+    LoanDetailComponent
   ],
   imports: [
     BrowserModule,

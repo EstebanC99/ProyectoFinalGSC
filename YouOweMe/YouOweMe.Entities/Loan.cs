@@ -32,5 +32,10 @@ namespace YouOweMe.Entities
             this.BorrowedAmount = borrowedAmount;
             this.LoanDate = DateTime.Now;
         }
+
+        public void Close()
+        {
+            this.ReturnDate = DateTime.Now;
+        }
     }
 }

@@ -48,6 +48,16 @@ namespace YouOweMe.Logic
             return this.Mapper.LoanToLoanDataView(loan);
         }
 
+        public List<LoanDataView> GetCurrentsLoans()
+        {
+            return this.Repository.GetCurrentsLoans().ConvertAll(l => this.Mapper.LoanToLoanDataView(l));
+        }
+
+        public List<LoanDataView> GetClosedLoans()
+        {
+            return this.Repository.GetClosedLoans().ConvertAll(l => this.Mapper.LoanToLoanDataView(l));
+        }
+
         public void Register(LoanDataView loanDataView)
         {
             var thing = this.ThingRepository.GetByID(loanDataView.Thing.ID ?? default);
@@ -63,6 +73,18 @@ namespace YouOweMe.Logic
             var loan = this.Factory.Crear(thing, person, loanDataView.BorrowedAmount, this.ThingDomainService);
 
             this.Repository.Add(loan);
+        }
+
+        public void CloseLoan(LoanDataView loanDataView)
+        {
+            var loan = this.Repository.GetByID(loanDataView.ID.Value);
+
+            if (loan is null)
+                throw new ValidationException("No se encontro el prestamo elegido!");
+
+            loan.Close();
+
+            this.Repository.Save(loan);
         }
     }
 }

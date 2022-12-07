@@ -8,6 +8,10 @@ namespace YouOweMe.Repositories.Loans
 
         Loan? GetByID(int id);
 
+        List<Loan> GetCurrentsLoans();
+
+        List<Loan> GetClosedLoans();
+
         void Add(Loan loan);
 
         void Delete(Loan loan);

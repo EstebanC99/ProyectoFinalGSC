@@ -16,6 +16,7 @@ namespace YouOweMe.Repositories.Loans
                        .Include(l => l.Thing)
                        .Include(l => l.Person)
                        .Include(l => l.Thing != null ? l.Thing.Category : null)
+                       .OrderBy(l => l.LoanDate)
                        .ToList();
         }
 
@@ -26,6 +27,28 @@ namespace YouOweMe.Repositories.Loans
                        .Include(l => l.Person)
                        .Include(l => l.Thing != null ? l.Thing.Category : null)
                        .FirstOrDefault();
+        }
+
+        public List<Loan> GetCurrentsLoans()
+        {
+            return this.Context.Loans
+                       .Include(l => l.Thing)
+                       .Include(l => l.Person)
+                       .Include(l => l.Thing != null ? l.Thing.Category : null)
+                       .Where(l => !l.ReturnDate.HasValue)
+                       .OrderBy(l => l.LoanDate)
+                       .ToList();
+        }
+
+        public List<Loan> GetClosedLoans()
+        {
+            return this.Context.Loans
+                       .Include(l => l.Thing)
+                       .Include(l => l.Person)
+                       .Include(l => l.Thing != null ? l.Thing.Category : null)
+                       .Where(l => l.ReturnDate.HasValue)
+                       .OrderBy(l => l.LoanDate)
+                       .ToList();
         }
 
         public void Add(Loan loan)

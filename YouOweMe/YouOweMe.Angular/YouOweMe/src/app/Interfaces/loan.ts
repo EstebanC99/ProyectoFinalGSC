@@ -5,5 +5,7 @@ export interface Loan {
     id?: number,
     thing: Thing,
     person: Person,
+    loanDate?: Date,
+    returnDate?: Date,
     borrowedAmount: number
 }

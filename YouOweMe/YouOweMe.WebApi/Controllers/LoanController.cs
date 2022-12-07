@@ -30,10 +30,28 @@ namespace YouOweMe.WebApi.Controllers
             return this.BusinessService.GetByID(id);
         }
 
+        [HttpGet("CurrentLoans")]
+        public List<LoanDataView> GetCurrentLoans()
+        {
+            return this.BusinessService.GetCurrentsLoans();
+        }
+
+        [HttpGet("ClosedLoans")]
+        public List<LoanDataView> GetClosedLoans()
+        {
+            return this.BusinessService.GetClosedLoans();
+        }
+
         [HttpPost("Register")]
         public void Register([FromBody] LoanDataView loanDataView)
         {
             this.BusinessService.Register(loanDataView);
+        }
+
+        [HttpPut("Close")]
+        public void CloseLoan([FromBody] LoanDataView loanDataView)
+        {
+            this.BusinessService.CloseLoan(loanDataView);
         }
     }
 }

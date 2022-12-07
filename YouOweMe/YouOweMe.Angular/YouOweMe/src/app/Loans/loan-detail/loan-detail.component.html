@@ -1,0 +1,37 @@
+<div class="loan-detail">
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Cosa</mat-label>
+            <input matInput [value]="selectedLoan?.thing?.name" readonly>
+            <mat-icon matSuffix>home_mini</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Categoria</mat-label>
+            <input matInput [value]="selectedLoan?.thing?.category?.description" readonly>
+            <mat-icon matSuffix>category</mat-icon>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Persona</mat-label>
+            <input matInput [value]='selectedLoan?.person?.name' readonly>
+            <mat-icon matSuffix>person_pin</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha de Prestamo</mat-label>
+            <input matInput [value]="selectedLoan?.loanDate | date:'dd-MM-yyyy HH:mm'" readonly>
+            <mat-icon matSuffix>calendar_month</mat-icon>
+        </mat-form-field>
+    </p>
+    <p *ngIf="selectedLoan && selectedLoan.returnDate">
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha devolucion</mat-label>
+            <input matInput [value]="selectedLoan.returnDate | date:'dd-MM-yy HH:mm'" readonly>
+            <mat-icon matSuffix>calendar_month</mat-icon>
+        </mat-form-field>
+    </p>
+</div>
+<div fxLayoutAlign="end" class="loan-detail-buttons">
+    <button mat-stroked-button color="primary" class="btn-lock" type="button" (click)="setAsClosed()" [disabled]="selectedLoan?.returnDate !== undefined">Marcar devolucion</button>
+    <button mat-stroked-button color="accent" class="btn-lock" type="button" (click)="cancel()">Cancelar</button>
+</div>
